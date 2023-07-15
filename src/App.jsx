@@ -1,5 +1,5 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
-
+import NavBar from "./components/NavBar";
 function App() {
   return (
     <>
@@ -10,8 +10,8 @@ function App() {
           lg: `"nav nav" "aside main"`, // but on large screens(wider then 1024px) we show nav on full top area & aside and main area on bottom
         }}
       >
-        <GridItem pl="2" bg="orange.300" area={"nav"}>
-          Nav
+        <GridItem area={"nav"}>
+          <NavBar />
         </GridItem>
 
         <Show above="lg">
