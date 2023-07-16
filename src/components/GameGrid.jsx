@@ -1,5 +1,6 @@
 import useGames from "../hooks/useGames";
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import GameCard from "./GameCard";
 
 const GameGrid = () => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
@@ -8,11 +9,16 @@ after importing this function we destructure that object(inside that function) &
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      {/*small screen 1 column, medium 2 colums etc */}
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        spacing={5}
+        padding="10px"
+      >
         {games.map((i) => (
-          <li key={i.id}>{i.name}</li>
+          <GameCard key={i.id} i={i} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };

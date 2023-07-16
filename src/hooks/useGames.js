@@ -6,7 +6,7 @@ import { CanceledError } from "../services/api-client";
 
 const useGames = () => {
   const [games, setGames] = useState([]);
-  console.log(games);
+  //console.log(games);
   const [error, setError] = useState("");
   //console.log(error);
 
