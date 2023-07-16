@@ -1,5 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 function App() {
   // Below we have main layout (Navbar,aside & main area) of our Home page
   return (
@@ -24,7 +25,7 @@ function App() {
         </Show>
 
         <GridItem pl="2" area={"main"}>
-          Main
+          <GameGrid />
         </GridItem>
       </Grid>
     </>
