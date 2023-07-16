@@ -1,25 +1,10 @@
-import { useState, useEffect } from "react";
-import apiClient from "../services/api-client";
+import useGames from "../hooks/useGames";
 import { Text } from "@chakra-ui/react";
 
 const GameGrid = () => {
-  const [games, setGames] = useState([]);
-  //console.log(games);
-  const [error, setError] = useState("");
-  console.log(error);
-
-  // Fetching data from api using custom apiClient
-  useEffect(() => {
-    apiClient
-      .get("./games")
-      .then((res) => {
-        setGames(res.data.results);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
-  }, []);
-
+  /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
+after importing this function we destructure that object(inside that function) & use games & error array here,code is clean and reusable */
+  const { games, error } = useGames();
   return (
     <>
       {error && <Text>{error}</Text>}
