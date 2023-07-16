@@ -1,4 +1,6 @@
-// Chakra-Ui => Color MOde for dark mode theme
+/* Chakra-Ui => Color MOde for dark mode theme , first of all we create theme file here, then we pass that 
+theme to chakra provider in main.jsx file, then we set colorModeScheme, untill this step dark mode in set locally in browser
+, then in colorModeSwither create switch botton (if color is dark then reverse the color)*/
 
 import { extendTheme } from "@chakra-ui/react"; // 1- import extend theme
 

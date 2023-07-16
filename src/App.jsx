@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
 import NavBar from "./components/NavBar";
 function App() {
+  // Below we have main layout (Navbar,aside & main area) of our Home page
   return (
     <>
       <Grid
@@ -17,12 +18,12 @@ function App() {
         <Show above="lg">
           {" "}
           {/*Show/Hide component chakra-ui, conditional renders if screen size is above/below to the given size , give screen size as props*/}
-          <GridItem pl="2" bg="gray.300" area={"aside"}>
+          <GridItem pl="2" area={"aside"}>
             Aside
           </GridItem>
         </Show>
 
-        <GridItem pl="2" bg="green.300" area={"main"}>
+        <GridItem pl="2" area={"main"}>
           Main
         </GridItem>
       </Grid>
