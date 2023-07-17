@@ -1,4 +1,5 @@
 import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import PlatformIconList from "./PlatformIconList";
 
 const GameCard = ({ i }) => {
   return (
@@ -8,6 +9,7 @@ const GameCard = ({ i }) => {
         <Image src={i.background_image} />
         <CardBody>
           <Heading fontSize="1xl">{i.name}</Heading>
+          <PlatformIconList i={i} />
         </CardBody>
       </Card>
     </>
