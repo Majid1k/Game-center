@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/layout";
+import { HStack } from "@chakra-ui/layout";
 import {
   FaWindows,
   FaPlaystation,
@@ -13,7 +13,7 @@ import { BsGlobe } from "react-icons/bs"; // from bootstarp   no need npm i
 import { Icon } from "@chakra-ui/icon";
 
 const PlatformIconList = ({ i }) => {
-  // to show imported icons we create an object so we display them easily
+  // to show imported icons we create an object so we display them easily, in Icon we connect this object with platform.slug to render icons as per slug
   const iconMap = {
     pc: FaWindows, // using slug as key instead of platform name, slug is lower case name, defined in is
     playstation: FaPlaystation,
