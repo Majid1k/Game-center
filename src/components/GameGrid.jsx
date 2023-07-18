@@ -16,7 +16,7 @@ after importing this function we destructure that object(inside that function) &
       {error && <Text>{error}</Text>}
       {/*small screen 1 column, medium 2 colums etc */}
       <SimpleGrid
-        columns={{ sm: 1, md: 3, lg: 4, xl: 5 }}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={5}
         padding="10px"
       >

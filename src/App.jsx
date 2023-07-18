@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 function App() {
   // Below we have main layout (Navbar,aside & main area) of our Home page
   return (
@@ -20,7 +21,7 @@ function App() {
           {" "}
           {/*Show/Hide component chakra-ui, conditional renders if screen size is above/below to the given size , give screen size as props*/}
           <GridItem pl="2" area={"aside"}>
-            Aside
+            <GenreList />
           </GridItem>
         </Show>
 
