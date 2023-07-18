@@ -2,6 +2,7 @@ import useGames from "../hooks/useGames";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
@@ -15,15 +16,22 @@ after importing this function we destructure that object(inside that function) &
       {error && <Text>{error}</Text>}
       {/*small screen 1 column, medium 2 colums etc */}
       <SimpleGrid
-        columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
+        columns={{ sm: 1, md: 3, lg: 4, xl: 5 }}
         spacing={5}
         padding="10px"
       >
-        {/* show skeleton component if loading is true */}
+        {/* show skeleton component if loading is true,  wraping GameCard & GameCardSkeleton components in GameCardContainer as children to apply styling*/}
         {isLoading &&
-          skeltons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}{" "}
+          skeltons.map((skeleton) => (
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
+            </GameCardContainer>
+          ))}
+
         {games.map((i) => (
-          <GameCard key={i.id} i={i} />
+          <GameCardContainer key={i.id}>
+            <GameCard i={i} />
+          </GameCardContainer>
         ))}
       </SimpleGrid>
     </>

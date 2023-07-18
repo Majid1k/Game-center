@@ -5,7 +5,7 @@ const GameCardSkeleton = () => {
   return (
     <>
       {/*Give same properties to card and skeleton */}
-      <Card width="250px" overflow="hidden" borderRadius={10}>
+      <Card>
         <Skeleton height={200}></Skeleton>
         <CardBody>
           <SkeletonText />

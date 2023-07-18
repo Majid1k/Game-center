@@ -7,7 +7,7 @@ const GameCard = ({ i }) => {
   return (
     <>
       {/*owerflow keeps the images equal to the size of its map container */}
-      <Card width="250px" overflow="hidden" borderRadius={10}>
+      <Card>
         {/*getCroppedImage coming from image-url.js to reduce the image size */}
         <Image src={getCroppedImageUrl(i.background_image)} />{" "}
         <CardBody>
