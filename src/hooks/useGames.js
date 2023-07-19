@@ -1,12 +1,19 @@
-// this is Custom-Hook, All this code was in GameGrid.jsx, we moved it here inside a function to make it reusable
+/* this is endpoint file from fetching data from games endpoint, we made this because we dont want our states file useData.js to know about our endpoint
+because that useData file is Generic (prototype) for all kind of fetching, useData.js is parent hook & useGames/useGenre/other hooks are
+its child, we make all our endpoints like this and attach them with generic hook*/
 
-import { useState, useEffect } from "react";
-import apiClient from "../services/api-client";
-import { CanceledError } from "../services/api-client";
+import useData from "./useData";
 
-const useGames = () => {
+const useGames = () => useData("/games"); // we pass /games endpoint to useData function which is defined in useData.js
+
+export default useGames;
+
+/*
+ All this code was in GameGrid.jsx, we moved it here inside a function to make it reusable,
+ instead of making sepates hook and below given fetching code for each endpoint,we made a Generic hook so we use that for all endpoints
+{
   const [games, setGames] = useState([]);
-  //console.log(games); or see responce of http request in network => preview
+  //console.log(genre); or see responce of http request in network => preview
   const [error, setError] = useState("");
   //console.log(error);
 
@@ -19,9 +26,9 @@ const useGames = () => {
 
     setIsLoading(true);
     apiClient
-      .get("./games", { signal: controller.signal })
+      .get("./genres", { signal: controller.signal })
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -33,5 +40,4 @@ const useGames = () => {
   }, []);
   return { games, error, isLoading }; // this whole function just returns an object holding 3 states, we import & destructure it in other files
 };
-
-export default useGames;
+*/

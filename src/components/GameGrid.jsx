@@ -6,8 +6,8 @@ import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
-after importing this function we destructure that object(inside that function) & use games & error array here,code is clean and reusable */
-  const { games, error, isLoading } = useGames();
+This file shows list of games so we destructure useGames() endpoint here, object holds data(from useGames endpoint) */
+  const { data, error, isLoading } = useGames();
 
   const skeltons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // will show 10 skeletons by maping when loading is true
 
@@ -28,7 +28,7 @@ after importing this function we destructure that object(inside that function) &
             </GameCardContainer>
           ))}
 
-        {games.map((i) => (
+        {data.map((i) => (
           <GameCardContainer key={i.id}>
             <GameCard i={i} />
           </GameCardContainer>

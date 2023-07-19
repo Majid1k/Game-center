@@ -1,10 +1,15 @@
-// This is Genre custom hook, All the states are defined & exported from this component, quite similar to useGames hook
+/* this is Custom-Hook for only Genre endpoint, we made this because we dont want our states file useData.js to know about our endpoint
+because that useData file is Generic (prototype) for all kind of fetching, useData.js is parent hook & useGames/useGenre/other hooks are
+its child, we can make as many endpoint files we want and attach them with Generic parent file useData.js here*/
 
-import { useState, useEffect } from "react";
-import apiClient from "../services/api-client";
-import { CanceledError } from "../services/api-client";
+import useData from "./useData";
 
-const useGenres = () => {
+const useGenres = () => useData("/genres");
+
+export default useGenres;
+
+/*
+{
   const [genres, setGenres] = useState([]);
   //console.log(genre); or see responce of http request in network => preview
   const [error, setError] = useState("");
@@ -33,5 +38,4 @@ const useGenres = () => {
   }, []);
   return { genres, error, isLoading }; // this whole function just returns an object holding 3 states, we import & destructure it in other files
 };
-
-export default useGenres;
+*/
