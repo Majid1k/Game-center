@@ -9,7 +9,7 @@ const GameCard = ({ i }) => {
       {/*owerflow keeps the images equal to the size of its map container */}
       <Card>
         {/*getCroppedImage coming from image-url.js to reduce the image size */}
-        <Image src={getCroppedImageUrl(i.background_image)} />{" "}
+        <Image src={getCroppedImageUrl(i.background_image)} />
         <CardBody>
           <Heading fontSize="1xl">{i.name}</Heading>
           <HStack justifyContent={"space-between"}>

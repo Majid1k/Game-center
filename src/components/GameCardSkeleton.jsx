@@ -6,7 +6,7 @@ const GameCardSkeleton = () => {
     <>
       {/*Give same properties to card and skeleton */}
       <Card>
-        <Skeleton height={200}></Skeleton>
+        <Skeleton height="200px" width="200px" />
         <CardBody>
           <SkeletonText />
         </CardBody>
