@@ -6,7 +6,7 @@ import useData from "./useData";
 
 const useGenres = () => useData("/genres");
 
-export default useGenres;
+export default useGenres; // This function returns all properties of useData(), {data,isLoading}
 
 /*
 {
