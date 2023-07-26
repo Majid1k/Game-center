@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "../services/api-client";
 
-const useData = (endpoint) => {
+const useData = (endpoint, requestConfig, deps) => {
   // recieving endpoint from useGames.js & useGenre.js as arrgument
   const [data, setData] = useState([]); // data is general variable for all endpoints useGames & useGenre etc
   const [error, setError] = useState("");
@@ -14,23 +14,26 @@ const useData = (endpoint) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Fetching data from api using custom apiClient
-  useEffect(() => {
-    const controller = new AbortController(); // see 4-Backend folder => Cancel fetch request for cleanup functions
+  useEffect(
+    () => {
+      const controller = new AbortController(); // see 4-Backend folder => Cancel fetch request for cleanup functions
 
-    setIsLoading(true);
-    apiClient
-      .get(endpoint, { signal: controller.signal })
-      .then((res) => {
-        setData(res.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-    return () => controller.abort();
-  }, []);
+      setIsLoading(true);
+      apiClient
+        .get(endpoint, { signal: controller.signal, ...requestConfig })
+        .then((res) => {
+          setData(res.data.results);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          if (err instanceof CanceledError) return;
+          setError(err.message);
+          setIsLoading(false);
+        });
+      return () => controller.abort();
+    },
+    deps ? [...deps] : []
+  );
   return { data, error, isLoading }; // this whole function just returns an object holding 3 states, we import & destructure it in GameGrid/otherFiles
 };
 

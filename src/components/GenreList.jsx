@@ -1,8 +1,15 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
+import {
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+  Button,
+} from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
-const GenreList = () => {
+const GenreList = ({ onSelectGenre }) => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
 This file shows list of genre so we destructure useGenre() endpoint here, object holds data(from useGenre endpoint) */
 
@@ -24,7 +31,13 @@ This file shows list of genre so we destructure useGenre() endpoint here, object
                 objectFit="cover"
                 borderRadius={8}
               />
-              <Text fontSize="lg">{genre.name}</Text>
+              <Button
+                variant="link"
+                fontSize="lg"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Button>
             </HStack>
           </ListItem>
         ))}
