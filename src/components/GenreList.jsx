@@ -9,7 +9,7 @@ import {
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
-const GenreList = ({ onSelectGenre }) => {
+const GenreList = ({ onSelectGenre, selectedGenre }) => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
 This file shows list of genre so we destructure useGenre() endpoint here, object holds data(from useGenre endpoint) */
 
@@ -32,6 +32,9 @@ This file shows list of genre so we destructure useGenre() endpoint here, object
                 borderRadius={8}
               />
               <Button
+                fontWeight={
+                  selectedGenre?.id === genre.id ? "extrabold" : "normal"
+                }
                 variant="link"
                 fontSize="lg"
                 onClick={() => onSelectGenre(genre)}

@@ -30,7 +30,10 @@ function App() {
         {/*Show/Hide component chakra-ui, conditional renders if screen size is above/below to the given size , give screen size as props*/}
         <Show above="lg">
           <GridItem pl="2" area={"aside"} paddingLeft={4}>
-            <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />{" "}
+            <GenreList
+              selectedGenre={selectedGenre}
+              onSelectGenre={(genre) => setSelectedGenre(genre)}
+            />{" "}
             {/* 02-filter, genre is = genre clicked by user, we set it to selected Genre*/}
           </GridItem>
         </Show>
