@@ -8,6 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 function App() {
   // 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
   const [selectedGenre, setSelectedGenre] = useState(null); // null is used to save only 1 selected/clicked ganre in this hook, instead of saving all selected objects
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
 
   // Below we have main layout (Navbar,aside & main area) of our Home page
   return (
@@ -40,8 +41,14 @@ function App() {
         </Show>
 
         <GridItem pl="2" area={"main"}>
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />{" "}
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />{" "}
           {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
         </GridItem>
       </Grid>
