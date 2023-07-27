@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   // 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
@@ -39,6 +40,7 @@ function App() {
         </Show>
 
         <GridItem pl="2" area={"main"}>
+          <PlatformSelector />
           <GameGrid selectedGenre={selectedGenre} />{" "}
           {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
         </GridItem>

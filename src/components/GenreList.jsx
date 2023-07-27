@@ -14,8 +14,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }) => {
 This file shows list of genre so we destructure useGenre() endpoint here, object holds data(from useGenre endpoint) */
 
   const { data, isLoading, error } = useGenres();
-
   // if we get error from api then return nothing in aside GenreList and if isLoading is true then show Chakra-Spinner
+
   if (error) return null;
   if (isLoading) return <Spinner />;
 
