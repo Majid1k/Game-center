@@ -4,16 +4,19 @@ its child, we make all our endpoints like this and attach them with generic hook
 
 import useData from "./useData";
 
-const useGames = (selectedGenre, selectedPlatform) =>
+const useGames = (gameQuery) =>
   // we pass /games endpoint to useData function which is defined in useData.js
   useData(
     "/games",
     {
       // 05-filter , as 2nd argument we pass Query-String-Perameter, {params} is axios request-config property to filter items
-      params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id },
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+      },
       // genres = selectedGenre.id , ? means (optional chaining, selectedGenre can also be null), if selected genre is null then genres will be null
     },
-    [selectedGenre?.id, selectedPlatform?.id] // 3rd perameter is for depencecy array of useEffect, changes in selectedGenre will re-render useEffect fetch request
+    [gameQuery] // 3rd perameter is for depencecy array of useEffect, changes in gameQuery={genre or platform} will re-render useEffect fetch request
   ); // recieve all these 3 passed values in useGames.js and use there
 
 export default useGames; // 06-filter, all 3 perameters are going to useData.js

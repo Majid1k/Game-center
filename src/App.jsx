@@ -6,9 +6,13 @@ import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
-  // 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
+  /* 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
   const [selectedGenre, setSelectedGenre] = useState(null); // null is used to save only 1 selected/clicked ganre in this hook, instead of saving all selected objects
-  const [selectedPlatform, setSelectedPlatform] = useState(null);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);  In refectoring code, we put these both variables in a Query object for all queries related to games*/
+  const [gameQuery, setGameQuery] = useState({
+    genre: null,
+    platform: null,
+  });
 
   // Below we have main layout (Navbar,aside & main area) of our Home page
   return (
@@ -33,10 +37,39 @@ function App() {
         <Show above="lg">
           <GridItem pl="2" area={"aside"} paddingLeft={4}>
             <GenreList
+              selectedGenre={gameQuery.genre}
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            />{" "}
+            {/* 02-filter, (genre) is = genre clicked by user, we add it into the gameQuery object*/}
+          </GridItem>
+        </Show>
+
+        <GridItem pl="2" area={"main"}>
+          {/* 02-filter, (platform) is = platform clicked by user, we add it into the gameQuery object*/}
+          <PlatformSelector
+            selectedPlatform={gameQuery.platform}
+            onSelectPlatform={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
+          />
+          <GameGrid gameQuery={gameQuery} />{" "}
+          {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
+        </GridItem>
+      </Grid>
+    </>
+  );
+}
+
+export default App;
+
+/*
+ <Show above="lg">
+          <GridItem pl="2" area={"aside"} paddingLeft={4}>
+            <GenreList
               selectedGenre={selectedGenre}
               onSelectGenre={(genre) => setSelectedGenre(genre)}
             />{" "}
-            {/* 02-filter, genre is = genre clicked by user, we set it to selected Genre*/}
+            {/* 02-filter, genre is = genre clicked by user, we set it to selected Genre}
           </GridItem>
         </Show>
 
@@ -49,11 +82,12 @@ function App() {
             selectedGenre={selectedGenre}
             selectedPlatform={selectedPlatform}
           />{" "}
-          {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
+          {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre }
         </GridItem>
       </Grid>
     </>
   );
 }
 
-export default App;
+
+*/
