@@ -1,9 +1,10 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 
 function App() {
   /* 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
@@ -46,12 +47,15 @@ function App() {
 
         <GridItem pl="2" area={"main"}>
           {/* 02-filter, (platform) is = platform clicked by user, we add it into the gameQuery object*/}
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          />
+          <HStack spacing={7} paddingLeft={3} marginBottom={4}>
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+            />
+            <SortSelector />
+          </HStack>
           <GameGrid gameQuery={gameQuery} />{" "}
           {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
         </GridItem>
