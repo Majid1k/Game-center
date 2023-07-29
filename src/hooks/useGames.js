@@ -13,6 +13,7 @@ const useGames = (gameQuery) =>
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
       },
       // genres = selectedGenre.id , ? means (optional chaining, selectedGenre can also be null), if selected genre is null then genres will be null
     },

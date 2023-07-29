@@ -4,6 +4,9 @@
 
 // this function takes a url as perameter & returns a new modified url where we only add image crop size
 const getCroppedImageUrl = (url) => {
+  // to fix app crash Error in console: can't read properties of null, some game cards does'nt have photos so app crashes
+  if (!url) return "";
+
   const target = "media/"; // /media keyword is in the url of media
 
   // in our url find indexOf word(media) + add lenght of media to the index

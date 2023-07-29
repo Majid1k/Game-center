@@ -13,6 +13,7 @@ function App() {
   const [gameQuery, setGameQuery] = useState({
     genre: null,
     platform: null,
+    sortOrder: "",
   });
 
   // Below we have main layout (Navbar,aside & main area) of our Home page
@@ -54,10 +55,15 @@ function App() {
                 setGameQuery({ ...gameQuery, platform })
               }
             />
-            <SortSelector />
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
           </HStack>
-          <GameGrid gameQuery={gameQuery} />{" "}
-          {/* 03-filter pass selectedGenre to gameGrid component to filter gameList as per selectedGenre */}
+          {/* 03-filter pass (game query object) holding 3 values to gameGrid component to filter gameList as per genre/platform/sort order */}
+          <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>

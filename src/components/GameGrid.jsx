@@ -7,7 +7,8 @@ import GameCardContainer from "./GameCardContainer";
 const GameGrid = ({ gameQuery }) => {
   /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
 This file shows list of games so we destructure useGames() endpoint here, object holds data(from useGames endpoint) */
-  const { data, error, isLoading } = useGames(gameQuery); // 04-filter pass selectedGenre to useGames hook, coz endpoint/fetching is shifted there from this file
+  const { data, error, isLoading } = useGames(gameQuery);
+  // 04-filter pass selectedGenre(or whole object holding game,genre & sorting) to useGames hook, coz endpoint/fetching is shifted there from this file
 
   const skeltons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // will show 10 skeletons by maping when loading is true
 
