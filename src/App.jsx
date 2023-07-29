@@ -1,10 +1,11 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react"; // see chakra-ui web => grid section
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 function App() {
   /* 01-filter, This state is to filter games by Genre, setSelectedGenre will be set in genreList.jsx & will be shared with gameGrid.jsx to filter games as per Genre
@@ -53,21 +54,27 @@ function App() {
 
         <GridItem pl="2" area={"main"}>
           {/* 02-filter, (platform) is = platform clicked by user, we add it into the gameQuery object*/}
-          <HStack spacing={7} paddingLeft={3} marginBottom={4}>
-            <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            />
-          </HStack>
-          {/* 03-filter pass (game query object) holding 3 values to gameGrid component to filter gameList as per genre/platform/sort order */}
+
+          <Box paddingLeft={3}>
+            <GameHeading gameQuery={gameQuery} />
+
+            <HStack spacing={7} marginBottom={4}>
+              <PlatformSelector
+                selectedPlatform={gameQuery.platform}
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              />
+              <SortSelector
+                sortOrder={gameQuery.sortOrder}
+                onSelectSortOrder={(sortOrder) =>
+                  setGameQuery({ ...gameQuery, sortOrder })
+                }
+              />
+            </HStack>
+            {/* 03-filter pass (game query object) holding 3 values to gameGrid component to filter gameList as per genre/platform/sort order */}
+          </Box>
+
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
