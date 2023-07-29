@@ -13,7 +13,8 @@ const useGames = (gameQuery) =>
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder,
+        ordering: gameQuery.sortOrder, // sending sortOrder selected by user to backend
+        search: gameQuery.searchText, // sending searched text by user to backend
       },
       // genres = selectedGenre.id , ? means (optional chaining, selectedGenre can also be null), if selected genre is null then genres will be null
     },

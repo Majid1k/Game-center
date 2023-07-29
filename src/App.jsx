@@ -14,6 +14,7 @@ function App() {
     genre: null,
     platform: null,
     sortOrder: "",
+    searchText: "",
   });
 
   // Below we have main layout (Navbar,aside & main area) of our Home page
@@ -32,7 +33,11 @@ function App() {
         }}
       >
         <GridItem area={"nav"}>
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
 
         {/*Show/Hide component chakra-ui, conditional renders if screen size is above/below to the given size , give screen size as props*/}

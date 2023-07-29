@@ -3,12 +3,12 @@ import logo from "../assets/logo.webp";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+const NavBar = ({ onSearch }) => {
   return (
     <>
       <HStack padding="10px">
         <Image src={logo} boxSize="55px" filter={"hue-rotate(-130deg)"} />
-        <SearchInput />
+        <SearchInput onSearch={onSearch} />
         <ColorModeSwitcher />
       </HStack>
     </>
