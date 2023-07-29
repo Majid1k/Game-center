@@ -1,11 +1,13 @@
+import image from "../assets/empty-image.webp";
+
 /* OPtimize/crop image :- The card images are very big in pixels, we are only showing them in small cards so we don't need large sized pictures,
  downloading & showing these images can slow the performance of web, few api's allow us to reduce image size, try it by
  copying image url and add crop property in it media.rawg.io/media/crop/600/400/games.....  you'll see smaller pic*/
 
 // this function takes a url as perameter & returns a new modified url where we only add image crop size
 const getCroppedImageUrl = (url) => {
-  // to fix app crash Error in console: can't read properties of null, some game cards does'nt have photos so app crashes
-  if (!url) return "";
+  // to fix app crash Error in console: can't read properties of null, some game cards does'nt have photos so app crashes, we place this image on those cards
+  if (!url) return image;
 
   const target = "media/"; // /media keyword is in the url of media
 
