@@ -13,7 +13,10 @@ export const ColorModeSwitcher = () => {
           isChecked={colorMode === "dark"}
           onChange={toggleColorMode}
         />
-        <Text fontSize="sm">Dark Mode</Text>
+        {/* white space property unwraps (show text is row, not in ciolumn) */}
+        <Text fontSize="sm" whiteSpace="nowrap">
+          Dark Mode
+        </Text>
       </HStack>
     </>
   );
