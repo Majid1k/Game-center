@@ -5,6 +5,7 @@ import {
   ListItem,
   Spinner,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
@@ -21,6 +22,9 @@ This file shows list of genre so we destructure useGenre() endpoint here, object
 
   return (
     <>
+      <Heading marginBottom={2} marginTop={4} fontSize="2xl">
+        Genres
+      </Heading>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
@@ -32,6 +36,8 @@ This file shows list of genre so we destructure useGenre() endpoint here, object
                 borderRadius={8}
               />
               <Button
+                whiteSpace="normal"
+                textAlign="left"
                 fontWeight={
                   selectedGenre?.id === genre.id ? "extrabold" : "normal"
                 }
