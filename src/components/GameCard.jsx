@@ -11,11 +11,11 @@ const GameCard = ({ i }) => {
         {/*getCroppedImage coming from image-url.js to reduce the image size */}
         <Image src={getCroppedImageUrl(i.background_image)} />
         <CardBody>
-          <Heading fontSize="1xl">{i.name}</Heading>
-          <HStack justifyContent={"space-between"}>
+          <HStack justifyContent={"space-between"} marginBottom="3px">
             <PlatformIconList i={i} />
             <CriticScore i={i} />
           </HStack>
+          <Heading fontSize="1xl">{i.name}</Heading>
         </CardBody>
       </Card>
     </>

@@ -17,8 +17,8 @@ This file shows list of games so we destructure useGames() endpoint here, object
       {error && <Text>{error}</Text>}
       {/*small screen 1 column, medium 2 colums etc */}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        spacing={5}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
         padding="10px"
       >
         {/* show skeleton component if loading is true,  wraping GameCard & GameCardSkeleton components in GameCardContainer as children to apply styling*/}
