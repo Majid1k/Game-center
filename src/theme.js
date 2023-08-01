@@ -12,22 +12,25 @@ const config = {
 // 3- call extendTheme function and pass config object in it
 const theme = extendTheme({
   config,
+  colors: {
+    // this is theme color pallet from chakra, we use it to show how grey color shade would look
+    gray: {
+      50: "#f9f9f9",
+      100: "#ededed",
+      200: "#d3d3d3",
+      300: "#b3b3b3",
+      400: "#a0a0a0",
+      500: "#898989",
+      600: "#6c6c6c",
+      700: "#202020",
+      800: "#121212",
+      900: "#111",
+    },
+  },
 });
 
 // 4- import and use in main.jsx
 export default theme;
 
 /*
-colors: {
-  gray: {
-    50: "#f9f9f9",
-    100: "#ededed",
-    200: "#d3d3d3",
-    300: "#b3b3b3",
-    400: "#a0a0a0",
-    500: "#898989",
-    600: "#6c6c6c",
-    700: "#202020",
-    800: "#121212",
-    900: "#111",
-  }, */
+ */
