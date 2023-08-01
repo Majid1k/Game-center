@@ -2,9 +2,12 @@
 because that useData file is Generic (prototype) for all kind of fetching, useData.js is parent hook & useGames/useGenre/other hooks are
 its child, we can make as many endpoint files we want and attach them with Generic parent file useData.js here*/
 
-import useData from "./useData";
+//import useData from "./useData";
+//const useGenres = () => useData("/genres");  normal way to pass /genres endpoint to useData for fetching, to show static genres see below
 
-const useGenres = () => useData("/genres");
+import genres from "../data/genres";
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
+//useData hook expects 3 properties from useGenre end point, so we set data to static genres, and see rest two, we are passing this object to useData
 
 export default useGenres; // This function returns all properties of useData(), {data,isLoading}
 
