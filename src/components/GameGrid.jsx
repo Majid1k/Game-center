@@ -12,30 +12,31 @@ This file shows list of games so we destructure useGames() endpoint here, object
 
   const skeltons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // will show 10 skeletons by maping when loading is true
 
-  return (
-    <>
-      {error && <Text>{error}</Text>}
-      {/*small screen 1 column, medium 2 colums etc */}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={6}
-        padding="10px"
-      >
-        {/* show skeleton component if loading is true,  wraping GameCard & GameCardSkeleton components in GameCardContainer as children to apply styling*/}
-        {isLoading &&
-          skeltons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
+  if (error) return <Text>{error}</Text>;
 
-        {data.map((i) => (
-          <GameCardContainer key={i.id}>
-            <GameCard i={i} />
+  {
+    /*small screen 1 column, medium 2 colums etc */
+  }
+  return (
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      spacing={6}
+      padding="10px"
+    >
+      {/* show skeleton component if loading is true,  wraping GameCard & GameCardSkeleton components in GameCardContainer as children to apply styling*/}
+      {isLoading &&
+        skeltons.map((skeleton) => (
+          <GameCardContainer key={skeleton}>
+            <GameCardSkeleton />
           </GameCardContainer>
         ))}
-      </SimpleGrid>
-    </>
+
+      {data.map((i) => (
+        <GameCardContainer key={i.id}>
+          <GameCard i={i} />
+        </GameCardContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
