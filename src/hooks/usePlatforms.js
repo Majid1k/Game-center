@@ -1,5 +1,5 @@
 import useData from "./useData";
 
-const usePlatforms = () => useData("/platforms/lists/parents"); //passing endpoint to useData Generic function
+const usePlatforms = () => useData("/platforms/lists/parents");
 
 export default usePlatforms;

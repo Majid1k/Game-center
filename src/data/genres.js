@@ -1,5 +1,4 @@
-// Genres do hardly change in api so we dont need to show a spinner while fetching genres, we can show genres locally as static data,
-// inspect => Network => in http request to genres we recieve results under preview, right click on results and copy paste value here
+// static genres,
 
 export default [
   {

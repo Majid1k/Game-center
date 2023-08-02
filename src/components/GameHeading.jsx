@@ -6,7 +6,7 @@ const GameHeading = ({ gameQuery }) => {
   } Games`;
 
   return (
-    <Heading as="h1" marginY={4} fontSize="4xl">
+    <Heading as="h1" marginY={5} fontSize="5xl">
       {heading}{" "}
     </Heading>
   );

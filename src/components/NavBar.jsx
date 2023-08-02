@@ -7,7 +7,7 @@ const NavBar = ({ onSearch }) => {
   return (
     <>
       <HStack padding="10px">
-        <Image src={logo} boxSize="55px" filter={"hue-rotate(-130deg)"} />
+        <Image src={logo} boxSize="60px" filter={"hue-rotate(-130deg)"} />
         <SearchInput onSearch={onSearch} />
         <ColorModeSwitcher />
       </HStack>

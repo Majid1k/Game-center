@@ -7,18 +7,16 @@ import Emoji from "./Emoji";
 const GameCard = ({ i }) => {
   return (
     <>
-      {/*owerflow keeps the images equal to the size of its map container */}
       <Card>
-        {/*getCroppedImage coming from image-url.js to reduce the image size */}
         <Image src={getCroppedImageUrl(i.background_image)} />
         <CardBody>
-          <HStack justifyContent={"space-between"} marginBottom="3px">
+          <HStack justifyContent="space-between" marginBottom={3}>
             <PlatformIconList i={i} />
             <CriticScore i={i} />
           </HStack>
-          <Heading fontSize="1xl">
+          <Heading fontSize="xl">
             {i.name}
-            <Emoji rating={i.rating_top} />{" "}
+            <Emoji rating={i.rating_top} />
           </Heading>
         </CardBody>
       </Card>

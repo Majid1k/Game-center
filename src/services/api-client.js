@@ -1,5 +1,4 @@
-// Making reusable custom api, base-url & key both comes from api fetching documantation
-
+// custom api
 import axios, { CanceledError } from "axios";
 
 export default axios.create({

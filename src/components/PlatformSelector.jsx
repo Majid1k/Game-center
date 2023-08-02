@@ -11,7 +11,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           {selectedPlatform?.name || "Platforms"}{" "}
-          {/*optional chaining, if there is a value selected in selectedPlatform then show its name, otherwise show "Platforms"*/}
         </MenuButton>
         <MenuList>
           {data.map((platform) => (
@@ -27,9 +26,5 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
     </>
   );
 };
-/*
-{data.map((platform) => (
-  <MenuItem key={platform.id}>{platform.name}</MenuItem>
-))}
-*/
+
 export default PlatformSelector;

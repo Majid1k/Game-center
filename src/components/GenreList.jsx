@@ -11,18 +11,14 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = ({ onSelectGenre, selectedGenre }) => {
-  /* we had all our hooks & effect here but to make them custom/reuseable we moved them in hooks folder inside a function, 
-This file shows list of genre so we destructure useGenre() endpoint here, object holds data(from useGenre endpoint) */
-
   const { data, isLoading, error } = useGenres();
-  // if we get error from api then return nothing in aside GenreList and if isLoading is true then show Chakra-Spinner
 
   if (error) return null;
   if (isLoading) return <Spinner />;
 
   return (
     <>
-      <Heading marginBottom={2} marginTop={4} fontSize="2xl">
+      <Heading fontSize="2xl" marginTop={9} marginBottom={3}>
         Genres
       </Heading>
       <List>
@@ -30,20 +26,18 @@ This file shows list of genre so we destructure useGenre() endpoint here, object
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
-                src={getCroppedImageUrl(genre.image_background)}
-                boxSize="30px"
-                objectFit="cover"
+                boxSize="32px"
                 borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
                 whiteSpace="normal"
                 textAlign="left"
-                fontWeight={
-                  selectedGenre?.id === genre.id ? "extrabold" : "normal"
-                }
-                variant="link"
-                fontSize="lg"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
+                fontSize="md"
+                variant="link"
               >
                 {genre.name}
               </Button>

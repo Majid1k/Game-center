@@ -6,16 +6,16 @@ import {
   FaApple,
   FaLinux,
   FaAndroid,
-} from "react-icons/fa"; //importing icons from font awesome
-import { MdPhoneIphone } from "react-icons/md"; // icon from matirial design, no need npm i
-import { SiNintendo } from "react-icons/si"; // no need npm i
-import { BsGlobe } from "react-icons/bs"; // from bootstarp   no need npm i
+} from "react-icons/fa";
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendo } from "react-icons/si";
+import { BsGlobe } from "react-icons/bs";
 import { Icon } from "@chakra-ui/icon";
 
 const PlatformIconList = ({ i }) => {
-  // to show imported icons we create an object so we display them easily, in Icon we connect this object with platform.slug to render icons as per slug
+  // using slug as key
   const iconMap = {
-    pc: FaWindows, // using slug as key instead of platform name, slug is lower case name, defined in is
+    pc: FaWindows,
     playstation: FaPlaystation,
     xbox: FaXbox,
     nintendo: SiNintendo,
@@ -26,14 +26,12 @@ const PlatformIconList = ({ i }) => {
     web: BsGlobe,
   };
   return (
-    <HStack marginY={"10px"}>
+    <HStack marginY={1}>
       {i.parent_platforms.map(({ platform }) => (
         <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
       ))}
     </HStack>
   );
 };
-/*we destructure .map({platform}) & bring out platform property, because in console we see,parent_platform array has further (platform object that has propertiies in it)
-instead of direct properties, and each object has a platform object, thats why we bring in out*/
 
 export default PlatformIconList;

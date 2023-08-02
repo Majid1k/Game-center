@@ -1,22 +1,17 @@
-/* This is Generic(for all /adresses games,genres etc), our useGames & useGenres hooks are almost similar (they fetch data,show error) the only difference
-is that they have different endpoints, so we create this Generic(genral)hook which can be used for all endpoints to fetch & save data */
-
 import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "../services/api-client";
 
 const useData = (endpoint, requestConfig, deps) => {
-  // recieving endpoint from useGames.js & useGenre.js as arrgument
-  const [data, setData] = useState([]); // data is general variable for all endpoints useGames & useGenre etc
+  // data is general variable for all endpoints useGames & useGenre etc
+  const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
-  // hook for Skeleton
   const [isLoading, setIsLoading] = useState(false);
 
-  // Fetching data from api using custom apiClient
   useEffect(
     () => {
-      const controller = new AbortController(); // see 4-Backend folder => Cancel fetch request for cleanup functions
+      const controller = new AbortController(); // cleanup function
 
       setIsLoading(true);
       apiClient
@@ -32,9 +27,10 @@ const useData = (endpoint, requestConfig, deps) => {
         });
       return () => controller.abort();
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     deps ? [...deps] : []
   );
-  return { data, error, isLoading }; // this whole function just returns an object holding 3 states, we import & destructure it in GameGrid/otherFiles
+  return { data, error, isLoading };
 };
 
 export default useData;
