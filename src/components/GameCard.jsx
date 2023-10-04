@@ -4,19 +4,19 @@ import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
 
-const GameCard = ({ i }) => {
+const GameCard = ({ game }) => {
   return (
     <>
       <Card>
-        <Image src={getCroppedImageUrl(i.background_image)} />
+        <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <HStack justifyContent="space-between" marginBottom={3}>
-            <PlatformIconList i={i} />
-            <CriticScore i={i} />
+            <PlatformIconList i={game} />
+            <CriticScore i={game} />
           </HStack>
           <Heading fontSize="xl">
-            {i.name}
-            <Emoji rating={i.rating_top} />
+            {game.name}
+            <Emoji rating={game.rating_top} />
           </Heading>
         </CardBody>
       </Card>
